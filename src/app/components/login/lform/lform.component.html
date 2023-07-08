@@ -1,0 +1,36 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="container-fluid">
+	<div class="row">
+		<div class="col-12 p-1">
+			<input 
+				type="text" 
+				autocomplete="email" 
+				formControlName="email" 
+				name="email" 
+				id="loginemail"
+				placeholder="user@email.com"
+				class="form-control"
+			>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 p-1">
+			<input 
+				type="password" 
+				autocomplete="current-password" 
+				formControlName="psk" 
+				name="psk" 
+				id="loginpsk"
+				placeholder="password"
+				class="form-control"
+			>
+		</div>
+	</div>
+	<hr class="text-muted">
+	<div class="row">
+		<div class="col-12 p-1 pe-0">
+			<button class="btn btn-success col-2 pull-right rounded-end-0">
+				Login
+			</button>
+		</div>
+	</div>
+</form>
