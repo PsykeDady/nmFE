@@ -1,29 +1,27 @@
 import { Injectable } from "@angular/core";
-import { NOUSER, User } from "../models/User";
+import { UserForm,NOUSER } from "../models/UserForm";
 
 @Injectable()
 export class AuthenticationService {
 
-	private _userLogged:User=NOUSER;
-	private _psk:string="";
+	private _userLogged:UserForm=NOUSER;
 
 	constructor() {}
 
 	credential():string{
-		return btoa(`${this._userLogged.email}:${this._psk}`); 
+		return btoa(`${this._userLogged.email}:${this._userLogged.pskH}`); 
 	}
 
 	logout() {
 		this._userLogged=NOUSER
-		this._psk=""
 	}
 
 	setup(username:string,password:string):void {
-		this._userLogged=new User("", username);
-		this._psk=password
+		this._userLogged.email=username; 
+		this._userLogged.pskH=password;
 	}
 
-	login(user:User):void{
+	login(user:UserForm):void{
 		this._userLogged=user;
 	}
 

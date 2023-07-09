@@ -14,6 +14,7 @@ import { SigninupGuard } from './guards/signinup.guard';
 import { AuthenticationInterceptor } from './interceptors/authentication.interceptor';
 import { LformComponent } from './components/login/lform/lform.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RformComponent } from './components/registration/rform/rform.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 		HomepageComponent,
 		AddAppointmentComponent,
 		LformComponent,
+  RformComponent,
 	],
 	imports: [
 		BrowserModule,

@@ -1,0 +1,74 @@
+<form [formGroup]="registrationForm" (ngSubmit)="register()" class="container-fluid">
+	<div class="row">
+		<div class="col-12 p-1">
+			<input 
+				type="text" 
+				autocomplete="email" 
+				formControlName="email" 
+				name="email" 
+				id="registrationemail"
+				placeholder="user@email.com"
+				class="form-control"
+			>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 p-1">
+			<input 
+				type="password" 
+				autocomplete="current-password" 
+				formControlName="psk" 
+				name="psk" 
+				id="registrationpsk"
+				placeholder="password"
+				class="form-control"
+				(keypress)="pskChange()"
+			>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-3 align-middle">
+			<btn class="btn fa fa-2x col-12" [ngClass]="{'fa-eye-slash':!seepsk,'fa-eye':seepsk}" (click)="flagSeepsk()">
+
+			</btn>
+		</div>
+		<div class="col-9 p-1">
+			<input 
+				type="text" 
+				class="form-control small"
+				formControlName="visiblepsk"
+			>
+		</div>
+	</div>
+	<div class="row input-group mt-2">
+		<div class="col-3 container-fluid">
+			<div class="row text-center form-switch p-0">
+				<div class="col-12 ps-5">
+					<input 
+						type="checkbox" 
+						class="form-check-input" 
+						name="isdoctorcheck" 
+						id="isdoctorcheck"
+						formControlName="isdoctorCheck"
+						(change)="flagIsDoctor($event)"
+					>
+				</div>
+				<small class="form-check-label col-12 text-muted">Doctor?</small>
+			</div>
+		</div>
+		<div class="col-9">
+			<select class="form-select pull-right" id="inputGroupSelect01" *ngIf="isDoctor" formControlName="selectType">
+				<option selected>NONE</option>
+				<option *ngFor="let item of doctorType()">{{item}}</option>
+			</select>
+		</div>
+	</div>
+	<hr class="text-muted">
+	<div class="row">
+		<div class="col-12 p-1 pe-0">
+			<button class="btn btn-success pull-right rounded-end-0">
+				Register
+			</button>
+		</div>
+	</div>
+</form>
