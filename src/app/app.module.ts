@@ -15,6 +15,7 @@ import { AuthenticationInterceptor } from './interceptors/authentication.interce
 import { LformComponent } from './components/login/lform/lform.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RformComponent } from './components/registration/rform/rform.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { RformComponent } from './components/registration/rform/rform.component'
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		HttpClientModule
 	],
 	providers: [
 		AuthenticationService,

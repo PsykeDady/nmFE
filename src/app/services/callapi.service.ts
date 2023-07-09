@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
 import { API_DOCTOR_LIST, API_DOCTOR_SEARCH, API_LOGIN, API_REGISTRATION, API_USER_MYAPPOINTMENTS, API_USER_NEWAPPOINTMENT } from "../constants/api.constants";
