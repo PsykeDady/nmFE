@@ -1,1 +1,48 @@
-<p>add-appointment works!</p>
+<form action="" [formGroup]="addAppointmentForm">
+	<div class="container-fluid mt-2">
+		<div class="row text-center m-3">
+			<legend>Add Appointment</legend>
+		</div>
+		<div class="row m-2">
+			<div class="col-12">
+				<select 
+					class="form-select pull-right" id="type"  formControlName="selectType"
+					(change)="searchDoctor()">
+					<option selected>NONE</option>
+					<option *ngFor="let item of doctorType()">{{item}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="row m-2">
+			<div class="col-12">
+				<select class="form-select pull-right" id="doctors"  formControlName="doctors" *ngIf="doctors.length>0">
+					<option selected></option>
+					<option *ngFor="let item of doctors;">{{item.email}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="row m-2" *ngIf="doctors.length>0">
+			<div class="col-12">
+				<input 
+					type="datetime-local" 
+					class="form-control"
+					name="datetime" 
+					id=""
+					formControlName="datetime"
+				>
+			</div>
+		</div>
+	</div>
+</form>
+<div class="pull-right">
+	<button class="btn btn-success" (click)="addAppointment()" [disabled]="disabledBottom()">
+		Add
+	</button>
+</div>
+<div *ngIf="alertModel.error">
+	<app-alert
+		[alertmodel]="alertModel"
+		[atype]="'DANGER'"
+		[message]="alertModel.message"
+	></app-alert>
+</div>

@@ -1,1 +1,29 @@
-<p>homepage works!</p>
+<div class="pull-right">
+	<button class="btn btn-danger rounded-end-0" (click)="logout()">
+		Logout {{userForm.name}}
+	</button>
+</div>
+<br><br>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<h2>
+				Next Appointments
+			</h2>
+		</div>
+		<hr>
+	</div>
+	<div class="row" *ngFor="let item of nextAppointments()">
+		<div class="col-12">
+			<app-appointmentdetail
+				[appointment]="item"
+			></app-appointmentdetail>
+		</div>
+	</div>
+</div>
+<br><br>
+<div class="position-fixed bottom-0 end-0 text-end m-5">
+	<button class="btn btn-lg btn-success rounded-circle text-muted"  (click)="onAddClick()">
+		<span class="fa fa-plus text-white"></span>
+	</button>
+</div>

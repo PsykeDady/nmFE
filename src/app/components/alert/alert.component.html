@@ -1,0 +1,12 @@
+<div class="container rounded m-2 p-2" [ngClass]='classColor()'>
+	<div class="row text-center">
+		<div class="col-12 small"> 
+			{{atype}} 
+			<button class="btn pull-right fa fa-close" (click)="onClose()"></button>
+		</div>
+		<hr class="col-10 offset-1 text-muted">
+	</div>
+	<div class="row">
+		<div class="col-12"> {{message}} </div>
+	</div>
+</div>

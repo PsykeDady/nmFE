@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
-import { Observable, tap } from "rxjs";
+import { Observable, tap, catchError } from "rxjs";
 import { API_DOCTOR_LIST, API_DOCTOR_SEARCH, API_LOGIN, API_REGISTRATION, API_USER_MYAPPOINTMENTS, API_USER_NEWAPPOINTMENT } from "../constants/api.constants";
 import { AuthenticationService } from "./authentication.service";
 import { UserForm } from "src/app/models/UserForm"
@@ -20,9 +20,16 @@ export class CallApiService {
 
 	login(email:string,password:string): Observable<any> {
 		this.authenticationService.setup(email,password)
-		let credentials:String = this.authenticationService.credential();
 		return this.httpClient.get<UserForm>(API_LOGIN)
-			.pipe(tap(user=> {this.authenticationService.login(user)}))
+			.pipe(
+				tap(user=> {
+					this.authenticationService.login(user)
+				}),
+				catchError((error)=>{
+					this.authenticationService.logout()
+					return error
+				})
+			)
 	}
 
 	logout(): void{

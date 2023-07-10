@@ -13,7 +13,6 @@ export class AuthenticationGuard implements CanActivate {
 	){}
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-		
 		if(!this.authenticationService.isLogged()){
 			return this.router.navigate(["/","login"]);
 		}

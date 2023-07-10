@@ -15,7 +15,10 @@ import { AuthenticationInterceptor } from './interceptors/authentication.interce
 import { LformComponent } from './components/login/lform/lform.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RformComponent } from './components/registration/rform/rform.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { AlertComponent } from './components/alert/alert.component';
+import { CORSInterceptor } from './interceptors/cors.interceptor';
+import { AppointmentdetailComponent } from './components/homepage/appointmentdetail/appointmentdetail.component';
 
 
 @NgModule({
@@ -27,6 +30,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 		AddAppointmentComponent,
 		LformComponent,
   RformComponent,
+  AlertComponent,
+  AppointmentdetailComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -41,7 +46,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 		AuthenticationGuard,
 		SigninupGuard,
 
-		AuthenticationInterceptor
+		{
+			provide:HTTP_INTERCEPTORS,
+			useClass:AuthenticationInterceptor,
+			multi:true
+		}
 	],
 	bootstrap: [AppComponent]
 })

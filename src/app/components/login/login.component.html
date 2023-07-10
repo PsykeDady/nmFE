@@ -15,7 +15,21 @@
 	</div>
 	<div class="row justify-content-center align-items-center g-2">
 		<div class="col-10 offset-1 shadow rounded bg-body-tertiary">
-			<app-lform></app-lform>
+			<app-lform
+				[alert]="alert"
+			></app-lform>
+		</div>
+	</div>
+</div>
+
+<div class="container" *ngIf="alert.error">
+	<div class="row justify-content-center align-content-center">
+		<div class="col-10 offset-1">
+			<app-alert 
+				atype="DANGER"
+				[alertmodel]='alert'
+				[message]="alert.message"
+			></app-alert>
 		</div>
 	</div>
 </div>

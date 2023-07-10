@@ -1,6 +1,6 @@
-export const API_URL:string="http://localhost:8080/"
+export const API_URL:string="http://localhost:8080"
 
-export const API_BASE:string=API_URL+"nanosoftmedical/"
+export const API_BASE:string=API_URL+"/nanosoftmedical"
 
 export const API_REGISTRATION:string=API_BASE+"/registration"
 export const API_LOGIN       :string=API_BASE+"/login"

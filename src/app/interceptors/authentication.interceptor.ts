@@ -14,13 +14,11 @@ export class AuthenticationInterceptor implements HttpInterceptor {
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		
 		if(this.authenticationService.isLogged()) {
-			const credential= this.authenticationService.credential;
+			const credential= this.authenticationService.credential();
 			if(req.url.startsWith(API_BASE)){
 				if(![API_REGISTRATION].includes(req.url)){
 					req=req.clone({
-						setHeaders: {
-							Authorization: `BASIC ${credential}`
-						}
+						headers:req.headers.append("Authorization", `BASIC ${credential}`)
 					})
 				}
 			}

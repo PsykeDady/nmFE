@@ -13,7 +13,6 @@ export class SigninupGuard implements CanActivate {
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
 		if(this.authenticationService.isLogged()){
-			console.log("ciao")
 			return this.router.navigate(["/"]);
 		}
 		return true;
